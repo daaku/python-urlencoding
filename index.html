@@ -1,80 +1,100 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Python &middot; urlencoding Documentation</title>
+        <meta name="keywords" content="url, urlencode, uri, http, query, query strings, post body, form encoding, python, library">
+        <meta name="description" content="Python URL Helpers.">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>nshah/python-urlencoding @ GitHub</title>
-	
-	<style type="text/css">
-		body {
-  		margin-top: 1.0em;
-  		background-color: #686cf3;
-		  font-family: "helvetica"; 
-  		color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-		h1 { font-size: 3.8em; color: #97930c; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #97930c; }
-    h3 { text-align: center; color: #97930c; }
-    a { color: #97930c; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-	</style>
-	
-</head>
-
-<body>
-  <a href="http://github.com/nshah/python-urlencoding"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.0.0pr2/build/cssfonts/fonts-min.css&3.0.0pr2/build/cssreset/reset-min.css&3.0.0pr2/build/cssgrids/grids-min.css&3.0.0pr2/build/cssbase/base-min.css">
+        <link rel="stylesheet" type="text/css" href="/sphinx.css">
+    </head>
+    <body>
+        <div id="document" class="yui-d2">
+        
   
-  <div id="container">
+  <div class="section" id="urlencoding">
+<h1>urlencoding<a class="headerlink" href="#urlencoding" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference external" href="http://python.org/">python</a> library for query string parsing and
+generation.</p>
+<p>The code is hosted
+<a class="reference external" href="https://github.com/nshah/python-urlencoding/tree/master">here at github</a>.
+The latest code can be downloaded as a
+<a class="reference external" href="http://github.com/nshah/python-urlencoding/zipball/master">zip file</a> or a
+<a class="reference external" href="http://github.com/nshah/python-urlencoding/tarball/master">tarball</a>.</p>
+<p>Requires Python 2.5 or newer.</p>
+<p>Can be installed using <a class="reference external" href="http://pip.openplans.org/">pip</a>:</p>
+<div class="highlight-python"><pre>pip install -e 'git://github.com/nshah/python-urlencoding.git#egg=urlencoding'</pre>
+</div>
+<dl class="function">
+<dt id="urlencoding.escape">
+<!--[urlencoding.escape]--><tt class="descclassname">urlencoding.</tt><tt class="descname">escape</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#urlencoding.escape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Escape the string according to:</p>
+<p>RFC3986: <a class="reference external" href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>
+<a class="reference external" href="http://oauth.net/core/1.0/#encoding_parameters">http://oauth.net/core/1.0/#encoding_parameters</a></p>
+<p>Arguments:</p>
+<blockquote>
+<dl class="docutils">
+<dt><cite>value</cite></dt>
+<dd>The string to escape.</dd>
+</dl>
+</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s">&#39;a b &amp; c&#39;</span><span class="p">)</span>
+<span class="go">&#39;a%20b%20%26%20c&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s">&#39;abc123-._~&#39;</span><span class="p">)</span>
+<span class="go">&#39;abc123-._~&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
 
-    <div class="download">
-      <a href="http://github.com/nshah/python-urlencoding/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/nshah/python-urlencoding/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-      
-    <h1><a href="http://github.com/nshah/python-urlencoding">python-urlencoding</a> 
-      <span class="small">by <a href="http://github.com/nshah">nshah</a></small></h1>
+<dl class="function">
+<dt id="urlencoding.parse_qs">
+<!--[urlencoding.parse_qs]--><tt class="descclassname">urlencoding.</tt><tt class="descname">parse_qs</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#urlencoding.parse_qs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a query string into a dict. Values my be strings or arrays.</p>
+<p>Arguments:</p>
+<blockquote>
+<dl class="docutils">
+<dt><cite>query</cite></dt>
+<dd>The query string or form encoded body to parse.</dd>
+</dl>
+</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="s">&#39;a=1&amp;b=</span><span class="si">%20c</span><span class="s">+d&#39;</span><span class="p">)</span>
+<span class="go">{&#39;a&#39;: &#39;1&#39;, &#39;b&#39;: &#39; c d&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="s">&#39;a=2&amp;a=1&#39;</span><span class="p">)</span>
+<span class="go">{&#39;a&#39;: [&#39;2&#39;, &#39;1&#39;]}</span>
+</pre></div>
+</div>
+</dd></dl>
 
-    <div class="description">
-      URL Encoding helpers
-    </div>
+<dl class="function">
+<dt id="urlencoding.compose_qs">
+<!--[urlencoding.compose_qs]--><tt class="descclassname">urlencoding.</tt><tt class="descname">compose_qs</tt><big>(</big><em>params</em>, <em>sort=False</em><big>)</big><a class="headerlink" href="#urlencoding.compose_qs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compose a single string using RFC3986 specified escaping using
+<a class="reference internal" href="#urlencoding.escape">urlencoding.escape</a> for keys and values.</p>
+<p>Arguments:</p>
+<blockquote>
+<dl class="docutils">
+<dt><cite>params</cite></dt>
+<dd>The dict of parameters to encode into a query string.</dd>
+<dt><cite>sort</cite></dt>
+<dd>Boolean indicating if the key/values should be sorted.</dd>
+</dl>
+</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">compose_qs</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="s">&#39; c d&#39;</span><span class="p">})</span>
+<span class="go">&#39;a=1&amp;b=%20c%20d&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">compose_qs</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">]})</span>
+<span class="go">&#39;a=2&amp;a=1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">compose_qs</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">]},</span> <span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">&#39;a=1&amp;a=2&amp;a=3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencoding</span><span class="o">.</span><span class="n">compose_qs</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mf">2</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">:</span> <span class="mf">3</span><span class="p">}},</span> <span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">&#39;a=1&amp;b%5Bc%5D=2&amp;b%5Bd%5D=3&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
 
-    <h2>Authors</h2>
-<p>Naitik Shah (n@daaku.org)</p>
-<h2>Contact</h2>
-<p>Naitik Shah (n@daaku.org)</p>
+</div>
 
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/nshah/python-urlencoding/zipball/master">zip</a> or
-      <a href="http://github.com/nshah/python-urlencoding/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/nshah/python-urlencoding</pre>
-    </p>
-      
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/nshah/python-urlencoding">nshah/python-urlencoding</a>
-    </div>
-    
-  </div>
-
-  
-</body>
+        </div>
+    </body>
 </html>
