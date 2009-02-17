@@ -15,9 +15,9 @@ def escape(value):
         `value`
             The string to escape.
 
-    >>> oauth.escape('a b & c')
+    >>> urlencoding.escape('a b & c')
     'a%20b%20%26%20c'
-    >>> oauth.escape('abc123-._~')
+    >>> urlencoding.escape('abc123-._~')
     'abc123-._~'
 
     """
@@ -35,9 +35,9 @@ def parse_qs(query):
         `query`
             The query string or form encoded body to parse.
 
-    >>> oauth.parse_qs('a=1&b=%20c+d')
+    >>> urlencoding.parse_qs('a=1&b=%20c+d')
     {'a': '1', 'b': ' c d'}
-    >>> oauth.parse_qs('a=2&a=1')
+    >>> urlencoding.parse_qs('a=2&a=1')
     {'a': ['2', '1']}
 
     """
@@ -53,8 +53,8 @@ ENCODED_OPEN_BRACKET = escape('[')
 ENCODED_CLOSE_BRACKET = escape(']')
 def compose_qs(params, sort=False, pattern='%s=%s', join='&', wrap=None):
     """
-    Compose a single string using OAuth specified escaping using
-    `oauth.escape`_ for keys and values.
+    Compose a single string using RFC3986 specified escaping using
+    `urlencoding.escape`_ for keys and values.
 
     Arguments:
 
@@ -64,13 +64,13 @@ def compose_qs(params, sort=False, pattern='%s=%s', join='&', wrap=None):
         `sort`
             Boolean indicating if the key/values should be sorted.
 
-    >>> oauth.compose_qs({'a': '1', 'b': ' c d'})
+    >>> urlencoding.compose_qs({'a': '1', 'b': ' c d'})
     'a=1&b=%20c%20d'
-    >>> oauth.compose_qs({'a': ['2', '1']})
+    >>> urlencoding.compose_qs({'a': ['2', '1']})
     'a=2&a=1'
-    >>> oauth.compose_qs({'a': ['2', '1', '3']}, sort=True)
+    >>> urlencoding.compose_qs({'a': ['2', '1', '3']}, sort=True)
     'a=1&a=2&a=3'
-    >>> oauth.compose_qs({'a': '1', 'b': {'c': 2, 'd': 3}}, sort=True)
+    >>> urlencoding.compose_qs({'a': '1', 'b': {'c': 2, 'd': 3}}, sort=True)
     'a=1&b%5Bc%5D=2&b%5Bd%5D=3'
 
     """
