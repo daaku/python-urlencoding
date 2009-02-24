@@ -10,7 +10,7 @@ The latest code can be downloaded as a
 `zip file <http://github.com/nshah/python-urlencoding/zipball/master>`_ or a
 `tarball <http://github.com/nshah/python-urlencoding/tarball/master>`_.
 
-Requires Python 2.5 or newer.
+Requires Python 2.6 or newer.
 
 Can be installed using `pip <http://pip.openplans.org/>`_::
 
