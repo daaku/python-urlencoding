@@ -24,7 +24,7 @@ def escape(value):
     return urllib.quote(value, safe='~')
 
 def is_nonstring_iterable(i):
-    return type(i) not in [str, unicode] and isinstance(i, collections.Iterable)
+    return not isinstance(i, basestring) and isinstance(i, collections.Iterable)
 
 def parse_qs(query):
     """
